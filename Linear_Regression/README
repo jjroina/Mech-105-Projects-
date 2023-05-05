@@ -1,1 +1,14 @@
+Inputs:
 
+x: a vector of numerical values representing the independent variable of a data set
+y: a vector of numerical values representing the dependent variable of a data set
+
+Outputs:
+
+fX: a vector of numerical values representing the independent variable of a data set with outliers removed
+fY: a vector of numerical values representing the dependent variable of a data set with outliers removed
+slope: a numerical value representing the slope of the linear regression line
+intercept: a numerical value representing the y-intercept of the linear regression line
+Rsquared: a numerical value representing the coefficient of determination (R-squared) of the linear regression model.
+
+Linear regression is a statistical method used to model the relationship between two continuous variables. It is used to estimate the value of one variable based on the value of another variable. The method involves fitting a straight line to a set of data points such that the distance between the line and the data points is minimized. The resulting line can then be used to predict the value of one variable based on the value of the other variable.
