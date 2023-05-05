@@ -1,11 +1,1 @@
 
-Solve the system of equations in the form Ax = b
-
-inputs:
-A - coefficient matrix of size n x n
-
-Outputs:
-L - lower triangular matrix of size n x n with unit diagonal
-U - upper triangular matrix of size n x n
-P - permutation matrix of size n x n
-
