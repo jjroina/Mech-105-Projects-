@@ -1,37 +1,15 @@
-function [root, fx, ea, iter] = falsePosition(func, xl, xu, es, maxit, varargin)
-%falsePosition finds the root of a function using false position method
-if nargin<3
-    error('More inputs required')
-end
+Inputs:
 
-if nargin<4
-    es=0.0001;
-    maxit=200;
-end
+func: the function to find the root of
+xl: the lower bound of the interval to search for the root
+xu: the upper bound of the interval to search for the root
+maxit : the maximum number of iterations 
+varargin : additional parameters for the function
+Outputs:
 
-if nargin<5
-    maxit=200;
-end
-iter=0;
-rootold=100;
-ea=100;
-while ea>es && iter<maxit
-    fxu=func(xu);
-    iter=iter+1;
-    fxl= func(xl);
-    root= xu - ((fxu*(xl-xu))/(fxl-fxu));
-    fx= func(root);
-    if fx==0;
-        ea=0;   
-    end
-    if fx<0 &&fxl<0;
-        xl=root;
-    else
-        xu = root;
-    end
-    if iter>=1 && fx~=0;
-        ea= (abs(rootold-root)/root)*100;
-    end
-    rootold=root;
-end
-end
+root: the estimated root of the function
+fx: the function value at the estimated root
+ea: the approximate relative error (%)
+iter: the number of iterations performed
+ 
+False Position is a root finding algorithm used to solve nonlinear equation with one unknown variable. It is an iterative method that starts with two initial guesses of the root, one at the lower end of the interval and one at the upper end. It then computes the intersection of the line segment connecting the two initial guesses with the x-axis.
