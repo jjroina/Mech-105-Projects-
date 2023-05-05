@@ -1,0 +1,37 @@
+function [L, U, P] = luFactor(A)
+% luFactor(A)
+%	LU decomposition with pivotiing
+% inputs:
+%	A = coefficient matrix
+
+[n, ~] = size(A);
+
+% Initialize L and U
+L = eye(n);
+U = A;
+
+% Initialize permutation matrix P
+P = eye(n);
+
+for k = 1:n-1
+    
+    % Find the row with the maximum absolute value in the kth column
+    [~, i] = max(abs(U(k:n, k)));
+    i = i + k - 1;
+    
+    % Swap rows k and i in U, L and P
+    U([k i], k:n) = U([i k], k:n);
+    L([k i], 1:k-1) = L([i k], 1:k-1);
+    P([k i], :) = P([i k], :);
+    
+    % Compute multipliers and update U and L
+    for j = k+1:n
+        L(j, k) = U(j, k)/U(k, k);
+        U(j, k:n) = U(j, k:n) - L(j, k)*U(k, k:n);
+    end
+    if P*A==A*L
+        error('try again')
+    end
+end
+
+
